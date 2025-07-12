@@ -1,4 +1,4 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -46,4 +46,55 @@
 
 .read-the-docs {
   color: #888;
+} */
+
+/* App.css */
+/* 
+
+/* App.css */
+
+html
+{
+  align-items: center;
 }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-image: url('/space.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  color: white;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  object-fit: cover;
+}
+
+/* Ensures your main app takes up width but stays centered */
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+
+/* Smooth font for inputs */
+textarea, select, input {
+  font-family: inherit;
+  color: aliceblue;
+}
+
+button {
+  transition: all 0.2s ease-in-out;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+  color: aliceblue;
+}
+
