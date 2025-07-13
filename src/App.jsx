@@ -101,11 +101,41 @@ const App = () => {
     stopAutoPlay();
   };
 
-  const downloadImage = (url, filename) => {
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = filename;
-    link.click();
+  // const downloadImage = (url, filename) => {
+  //   const link = document.createElement('a');
+  //   link.href = url;
+  //   link.download = filename;
+  //   link.click();
+  // };
+
+  const downloadImage = async (url, filename) => {
+    try {
+      // Fetch the image data
+      const response = await fetch(url);
+      const blob = await response.blob();
+
+      // Create a download link
+      const downloadUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = downloadUrl;
+      link.download = filename;
+
+      // Trigger download
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      // Clean up the blob URL
+      window.URL.revokeObjectURL(downloadUrl);
+    } catch (error) {
+      console.error('Download failed:', error);
+      // Fallback to direct link method
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = filename;
+      link.target = '_blank';
+      link.click();
+    }
   };
 
   // Slideshow controls
